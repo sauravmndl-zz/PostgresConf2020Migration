@@ -6,18 +6,17 @@ SAP Cloud Platform (SCP) is an open platform-as-a-service (PaaS) which facilitat
 
 ## Why migration required?
 
-In cloud it is quite offen that applications need to consume databse services from a different environment. In that case migration of database is absolute necessary. Then service providers need to come up with a pragmatic solution, keeping few aspects in mind - atomicity, performance and less manual intervention. Most importantly the solution should be infrastructre agnostic, if the cloud vendor supports multiple IaaS. Imagine how hunders of databases migrated 
+In cloud it is quite often that applications need to consume database services from a different environment. In that case migration of database is absolute necessary. Then service providers need to come up with a pragmatic solution, keeping few aspects in mind - atomicity, performance and less manual intervention. Most importantly the solution should be infrastuctre agnostic, if the cloud vendor supports multiple IaaS. Imagine how hundreds of databases migrated 
 
 ## Automated migration at SAP cloud platform
 
-PostgreSQL stores data to persistent disk attched to the VM. In the VM aparat from postgres process, an agent process is run which is responsible for automated migration of entired data on persistent disk to the target postgres server. The agent process is triggered as per user's request, here onwards entire procedure is automated. Agent performs following steps in migration
+PostgreSQL stores data to persistent disk attached to the VM. In the VM apart from postgres process, an agent process is run which is responsible for automated migration of entire data on persistent disk to the target postgres server. The agent process is triggered as per user's request, here onwards entire procedure is automated. Agent performs following steps in migration
 
 1. Attaches an auxiliary disk to the source VM
 2. Takes backup of data from persistent disk to auxiliary disk
 3. Triggers restore to target postgres server from the backup data
-4. Deletes auxiliary disk after sucessful migration
+4. Deletes auxiliary disk after successful migration
 
-The migration happens in offline mode, application stops accessing data. It is atomic, failure at any step leads to restart of operation. Agent retries to complete successfully, if not manual intervention is required. For backup and recovery pg_dump and pg_restore used respectively. As dedicated agent runs on each source server, it migrates only individual data, and hence performance is not impacted. This automation process allows to migrate many databses in a single-window, and thus reduces operational effort by significant factor. Here is a flow diagram of entire process presented.
+The migration happens in offline mode, application stops accessing data. It is atomic, failure at any step leads to restart of operation. Agent retries to complete successfully, if not manual intervention is required. For backup and recovery pg_dump and pg_restore used respectively. As dedicated agent runs on each source server, it migrates only individual data, and hence performance is not impacted. This automation process allows to migrate many databases in a single-window, and thus reduces operational effort by significant factor. Here is a flow diagram of entire process presented.
 
-<img src="https://github.com/akashkumar58/pgconf/blob/master/backup-status.png" width="420" align="left"> <img src="https://github.com/akashkumar58/pgconf/blob/master/backupStatus.png" width="420" float="right">
-
+![N|Solid](https://github.com/sauravmndl/PostgresConf2020Migration/blob/master/pgconf_migration.png?raw=true)
