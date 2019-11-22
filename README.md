@@ -10,18 +10,14 @@ In cloud it is quite offen that applications need to consume databse services fr
 
 ## Automated migration at SAP cloud platform
 
-PostgreSQL stores data to persistent disk attched to the VM. In the same VM aparat from postgres process, an agent process is run which is responsible for automated migration of entired data on persistent disk to the target postgres server. The agent process is triggered as per user's request, here onwards entire procedure is automated. Agent performs following steps in migration
+PostgreSQL stores data to persistent disk attched to the VM. In the VM aparat from postgres process, an agent process is run which is responsible for automated migration of entired data on persistent disk to the target postgres server. The agent process is triggered as per user's request, here onwards entire procedure is automated. Agent performs following steps in migration
 
 1. Attaches an auxiliary disk to the source VM
 2. Takes backup of data from persistent disk to auxiliary disk
 3. Triggers restore to target postgres server from the backup data
 4. Deleted auxiliary disk after sucessful migration
 
+The migration happens in offline mode, application stops accessing data. It is atomic, failure at any step leads to restart of operation. For backup and recovery pg_dump and pg_restore used respectively. Here is a flow diagram of entire process presented.
 
 <img src="https://github.com/akashkumar58/pgconf/blob/master/backup-status.png" width="420" align="left"> <img src="https://github.com/akashkumar58/pgconf/blob/master/backupStatus.png" width="420" float="right">
 
-## Alerting System for Backup & Restore
-In case when backup fails or after restore the service instance is not running, email based alerts are raised.
-<p align="center">
-  <img src="https://github.com/akashkumar58/pgconf/blob/master/backupAlert.png" width="600"/>
-</p>
