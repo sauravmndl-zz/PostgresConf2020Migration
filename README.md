@@ -1,4 +1,4 @@
-# Enterprise-grade automated migration for PostgreSQL-as-a-Service on SAP Multi Cloud Platform
+# Enterprise-grade Automated Migration for PostgreSQL on Cloud
 
 SAP Cloud Platform (SCP) is an open platform-as-a-service (PaaS) which facilitates creating new cloud applications or extending existing applications and run them in a secure cloud environment managed by SAP. The SAP Cloud Platform integrates data and business processes. SCP supports multiple Infrastructure-as-a-Service (IaaS) like AWS, Azure, GCP, Alibaba Cloud and OpenStack.
 
