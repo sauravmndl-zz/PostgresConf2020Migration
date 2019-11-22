@@ -6,7 +6,7 @@ SAP Cloud Platform (SCP) is an open platform-as-a-service (PaaS) which facilitat
 
 ## Why migration required?
 
-In cloud it is quite often that applications need to consume database services from a different environment. In that case migration of database is absolute necessary. Then service providers need to come up with a pragmatic solution, keeping few aspects in mind - atomicity, performance and less manual intervention. Most importantly the solution should be infrastuctre agnostic, if the cloud vendor supports multiple IaaS. Imagine how hundreds of databases migrated 
+In cloud it is quite often that applications need to consume database services from a different environment. In that case migration of database is absolute necessary. Then service providers need to come up with a pragmatic solution, keeping few aspects in mind - atomicity, performance and less manual intervention. Most importantly the solution should be infrastuctre agnostic, if the cloud vendor supports multiple IaaS. Imagine how hundreds of databases migrated in parallel?
 
 ## Automated migration at SAP cloud platform
 
